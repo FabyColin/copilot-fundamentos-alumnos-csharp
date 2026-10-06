@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - name: Pruebas de la app base
+        run: dotnet test tests/Farmacia.Api.Tests
+      - name: Compilar los ejercicios
+        run: dotnet build ejercicios/Ejercicios.sln

@@ -1,0 +1,20 @@
+{
+  "name": "Curso GitHub Copilot - Pista C# (ASP.NET Core)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": { "version": "10.0" },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "dotnet restore Farmacia.sln && dotnet restore ejercicios/Ejercicios.sln",
+  "forwardPorts": [5000, 5001],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github",
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  }
+}

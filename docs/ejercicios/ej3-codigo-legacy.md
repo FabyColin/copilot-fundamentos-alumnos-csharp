@@ -1,0 +1,58 @@
+# Ejercicio 3: Rescata el script legacy (C#)
+
+**Módulo:** [6. Comprensión y corrección](../modulos/06-comprension-y-correccion.md) · **Tiempo:** 30 min
+**Carpeta:** `ejercicios/ej3-codigo-legacy/`
+
+## Escenario
+
+Heredaste el reporte de ventas de las sucursales de la farmacia, `Program.cs`: nadie lo documentó, usa nombres de una letra y el equipo dice que "a veces falla". Se ejecuta así:
+
+```bash
+dotnet run --project ejercicios/ej3-codigo-legacy -- ejercicios/ej3-codigo-legacy/ventas.csv
+```
+
+Debe mostrar el **top 3 de vendedores**, el **ticket promedio por sucursal** y el **total de ventas**.
+
+## Parte 1: entender (10 min)
+
+Usando Copilot (**sin leer primero el código por tu cuenta**):
+
+1. En modo Ask: "Resume qué hace este programa, sus entradas y sus salidas."
+2. Selecciona el método local `F` y usa `/explain`.
+3. Pide nombres descriptivos para `F`, `R`, `d`, `r`, `t`, `g`, `s`, `k`, `m`.
+4. Con `#codebase`: "¿Qué columnas del CSV usa el programa y en qué posición?"
+
+**Entregable:** un párrafo (3 a 5 líneas) con tu explicación del programa, escrito **con tus palabras**.
+
+## Parte 2: diagnosticar y corregir (15 min)
+
+El programa tiene **3 bugs**. Dos son silenciosos: no lanzan error y producen números equivocados. Uno hace que el programa se detenga.
+
+1. Ejecútalo y revisa la salida. ¿Algo falla? ¿Algo parece raro?
+2. Para cada problema, usa el reporte de bug del módulo 6 (esperado / obtenido / reproducción).
+3. Pide a Copilot **la causa** antes de la corrección.
+4. Aplica el arreglo y **verifica ejecutando de nuevo**.
+
+> **Pista de verificación**
+>
+> Calcula a mano el total de las ventas de `Marta` en `ventas.csv` y compáralo con lo que muestra el reporte.
+
+> **Un detalle de C#**
+>
+> El programa usa `decimal`, el tipo correcto para dinero. Dividir un `decimal` entre cero **lanza una excepción**; con `double` el resultado sería `NaN` o `Infinity` sin avisar. Es una de las razones para elegir bien el tipo.
+
+## Parte 3: dejarlo mejor (5 min)
+
+Pide a Copilot que refactorice el programa con nombres descriptivos, métodos pequeños y un `record` para las ventas, **sin cambiar el resultado**. Verifica que la salida coincide con la de tu versión corregida.
+
+## Criterios de aceptación
+
+- [ ] El programa corre sin excepciones.
+- [ ] Los números coinciden con tus cálculos manuales.
+- [ ] Para cada bug anotaste: **qué fallaba, por qué y cómo lo detectaste**.
+- [ ] Puedes explicar cada corrección sin mirar la respuesta de Copilot.
+
+## Preguntas de cierre
+
+1. ¿Qué bug fue el más difícil de detectar? ¿Por qué?
+2. ¿Hubo algún "arreglo" de Copilot que ocultaba el problema en lugar de resolverlo (por ejemplo, un `try/catch` vacío)?

@@ -1,0 +1,6 @@
+{
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "chat.promptFiles": true,
+  "dotnet.defaultSolution": "Farmacia.sln"
+}
